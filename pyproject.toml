@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-dataset-builder"
+version = "0.1.0"
+description = "One-shot local dataset builder for Pi and Codex session histories"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Mindverse" }
+]
+dependencies = [
+  "pydantic>=2",
+  "pyarrow>=14"
+]
+
+[tool.setuptools]
+packages = ["agentic_dataset"]
