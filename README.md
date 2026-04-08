@@ -8,9 +8,25 @@ Use Python 3.10+.
 
 Recommended one-shot environment setup:
 
+Linux / macOS:
+
 ```bash
 ./setup.sh
 source .venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+.\setup.ps1
+.\.venv\Scripts\Activate.ps1
+```
+
+Windows CMD:
+
+```bat
+setup.bat
+.venv\Scripts\activate.bat
 ```
 
 Manual alternative:
@@ -25,6 +41,12 @@ From this directory:
 
 ```bash
 ./run.sh --output-root ./out
+```
+
+Cross-platform Python entrypoint:
+
+```bash
+python run.py --output-root ./out
 ```
 
 That one command will:
@@ -97,6 +119,8 @@ README.md
 
 ## Notes
 
+- default session roots are auto-detected for Linux, macOS, and Windows
+- override session paths with `--pi-root` and `--codex-root` if needed
 - Pi currently provides much better visible reasoning coverage than Codex.
 - Codex traces are still useful for agent-behavior distillation even when reasoning is encrypted-only.
 - Redaction is not included yet. Add it before distributing the tool broadly if users may have sensitive local data.

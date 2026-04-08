@@ -12,7 +12,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 
-DEFAULT_SESSION_ROOT = Path.home() / '.pi' / 'agent' / 'sessions'
+try:
+    from .platform_paths import default_pi_session_root
+except ImportError:  # pragma: no cover - direct script execution fallback
+    from platform_paths import default_pi_session_root  # type: ignore
+
+DEFAULT_SESSION_ROOT = default_pi_session_root()
 EXPORT_VERSION = 1
 TEXT_SAMPLE_LIMIT = 4000
 RAW_MODE = 'raw'

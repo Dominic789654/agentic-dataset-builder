@@ -13,9 +13,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Sequence, Tuple
 
 from .export_qwen35_training import append_parquet_rows, ensure_parquet_runtime, record_to_parquet_row
-
-DEFAULT_PI_ROOT = Path.home() / '.pi' / 'agent' / 'sessions'
-DEFAULT_CODEX_ROOT = Path.home() / '.codex' / 'sessions'
+from .platform_paths import default_codex_session_root, default_pi_session_root
 
 
 def python_entry(module_name: str, script_dir: Path) -> List[str]:
@@ -27,8 +25,8 @@ def python_entry(module_name: str, script_dir: Path) -> List[str]:
 
 def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description='Build one merged agentic dataset from local Pi and Codex sessions.')
-    parser.add_argument('--pi-root', default=str(DEFAULT_PI_ROOT), help='Pi session root.')
-    parser.add_argument('--codex-root', default=str(DEFAULT_CODEX_ROOT), help='Codex session root.')
+    parser.add_argument('--pi-root', help='Pi session root. Defaults to auto-detected OS-specific location.')
+    parser.add_argument('--codex-root', help='Codex session root. Defaults to auto-detected OS-specific location.')
     parser.add_argument('--output-root', required=True, help='Output root directory.')
     parser.add_argument('--include-sources', default='pi,codex', help='Comma-separated sources to include: pi,codex')
     parser.add_argument('--include-labels', default='cot_eligible,agent_only', help='Comma-separated labels to keep in final dataset.')
@@ -288,8 +286,8 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     include_sources = {item.strip() for item in args.include_sources.split(',') if item.strip()}
     keep_labels = {item.strip() for item in args.include_labels.split(',') if item.strip()}
-    pi_root = Path(args.pi_root).expanduser().resolve()
-    codex_root = Path(args.codex_root).expanduser().resolve()
+    pi_root = Path(args.pi_root).expanduser().resolve() if args.pi_root else default_pi_session_root()
+    codex_root = Path(args.codex_root).expanduser().resolve() if args.codex_root else default_codex_session_root()
     export_dirs: Dict[str, Path] = {}
     label_dirs: List[Tuple[str, Path]] = []
     manifest: Dict[str, Any] = {
