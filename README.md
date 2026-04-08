@@ -2,6 +2,16 @@
 
 Build one merged training dataset from local Pi and Codex session history.
 
+## Setup
+
+Use Python 3.10+.
+
+Install runtime dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## What users run
 
 From this directory:
