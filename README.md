@@ -2,51 +2,48 @@
 
 Build one merged training dataset from local Pi and Codex session history.
 
-## Setup
+## Runtime
 
-Use Python 3.10+.
+The core implementation is Python. User-facing entrypoints do not require bash.
 
-Recommended one-shot environment setup:
+Requirements:
 
-Linux / macOS:
+- Python 3.10+
+- Node 18+ if you want to run via `npx`
+
+## Recommended usage
+
+Published npm-style entrypoint:
 
 ```bash
-./setup.sh
-source .venv/bin/activate
+npx agentic-dataset-builder --output-root ./out
 ```
 
-Windows PowerShell:
+Local repo usage without bash:
 
-```powershell
-.\setup.ps1
-.\.venv\Scripts\Activate.ps1
+```bash
+node cli.mjs --output-root ./out
 ```
 
-Windows CMD:
+Direct Python entrypoint:
 
-```bat
-setup.bat
-.venv\Scripts\activate.bat
+```bash
+python run.py --output-root ./out
 ```
 
-Manual alternative:
+If you want to pre-create the Python environment yourself:
 
 ```bash
 pip install -r requirements.txt
+python run.py --output-root ./out
 ```
 
 ## What users run
 
-From this directory:
+From this directory, the simplest no-bash local command is:
 
 ```bash
-./run.sh --output-root ./out
-```
-
-Cross-platform Python entrypoint:
-
-```bash
-python run.py --output-root ./out
+node cli.mjs --output-root ./out
 ```
 
 That one command will:
@@ -83,16 +80,16 @@ Supporting files:
 
 ```bash
 # only Pi
-./run.sh --output-root ./out --include-sources pi
+node cli.mjs --output-root ./out --include-sources pi
 
 # only Codex
-./run.sh --output-root ./out --include-sources codex
+node cli.mjs --output-root ./out --include-sources codex
 
 # keep intermediates for debugging
-./run.sh --output-root ./out --keep-intermediates
+node cli.mjs --output-root ./out --keep-intermediates
 
 # also emit final merged jsonl/jsonl.gz
-./run.sh --output-root ./out --final-format both
+node cli.mjs --output-root ./out --final-format both
 ```
 
 ## What is kept by default
@@ -114,6 +111,8 @@ agentic_dataset/
   export_qwen35_training.py
   qwen35_training_record.py
 run.sh
+run.py
+cli.mjs
 README.md
 ```
 

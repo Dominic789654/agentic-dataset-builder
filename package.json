@@ -1,0 +1,13 @@
+{
+  "name": "agentic-dataset-builder",
+  "version": "0.1.0",
+  "description": "One-shot local dataset builder for Pi and Codex session histories",
+  "license": "MIT",
+  "bin": {
+    "agentic-dataset-builder": "./cli.mjs"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}
