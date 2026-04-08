@@ -2,12 +2,39 @@
   "name": "agentic-dataset-builder",
   "version": "0.1.0",
   "description": "One-shot local dataset builder for Pi and Codex session histories",
+  "homepage": "https://github.com/Dominic789654/agentic-dataset-builder",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dominic789654/agentic-dataset-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dominic789654/agentic-dataset-builder/issues"
+  },
   "license": "MIT",
+  "keywords": [
+    "agentic",
+    "dataset",
+    "pi",
+    "codex",
+    "qwen",
+    "parquet"
+  ],
+  "files": [
+    "cli.mjs",
+    "run.py",
+    "requirements.txt",
+    "README.md",
+    "LICENSE",
+    "agentic_dataset"
+  ],
   "bin": {
     "agentic-dataset-builder": "./cli.mjs"
   },
   "type": "module",
   "engines": {
     "node": ">=18"
+  },
+  "scripts": {
+    "pack:check": "npm pack --dry-run"
   }
 }

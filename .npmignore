@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+agentic_dataset/__pycache__/
+out/
+out2/
+out3/
+test-out/
+test-out-node/
+.venv/
+.git/
