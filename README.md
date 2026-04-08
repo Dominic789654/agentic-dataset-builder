@@ -6,7 +6,14 @@ Build one merged training dataset from local Pi and Codex session history.
 
 Use Python 3.10+.
 
-Install runtime dependencies:
+Recommended one-shot environment setup:
+
+```bash
+./setup.sh
+source .venv/bin/activate
+```
+
+Manual alternative:
 
 ```bash
 pip install -r requirements.txt
