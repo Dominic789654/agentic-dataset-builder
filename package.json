@@ -20,7 +20,7 @@
     "parquet"
   ],
   "files": [
-    "cli.mjs",
+    "bin",
     "run.py",
     "requirements.txt",
     "README.md",
@@ -28,7 +28,7 @@
     "agentic_dataset"
   ],
   "bin": {
-    "agentic-dataset-builder": "./cli.mjs"
+    "agentic-dataset-builder": "./bin/agentic-dataset-builder.js"
   },
   "type": "module",
   "engines": {
